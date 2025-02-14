@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640, height=1136, initial-scale=1">
+    <title>User Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgba(245,245,245,255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .info {
+            text-align: left;
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 85%;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background: rgb(244,131,58);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            height: 45px;
+        }
+
+        button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>User Summary</h2>
+        <p class="info"><strong>Phone:</strong> <span id="phone"></span></p>
+        <p class="info"><strong>Name:</strong> <span id="name"></span></p>
+        <p class="info"><strong>Birthday:</strong> <span id="birthday"></span></p>
+        <p class="info"><strong>Email:</strong> <span id="email"></span></p>
+        <button onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        // Retrieve saved data
+        const userData = JSON.parse(localStorage.getItem("userData"));
+
+        if (userData) {
+            document.getElementById("phone").textContent = userData.phone || "Not provided";
+            document.getElementById("name").textContent = userData.name || "Not provided";
+            document.getElementById("birthday").textContent = userData.birthday || "Not provided";
+            document.getElementById("email").textContent = userData.email || "Not provided";
+        } else {
+            document.body.innerHTML = "<h2>No user data found. Please go back and enter your details.</h2>";
+        }
+
+        function goBack() {
+            window.location.href = "page2.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!-- page2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640, height=1136, initial-scale=1">
+    <title>User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            width: 75%;
+            max-width: 510px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(245,245,245,255);
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 85%;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background: rgb(244,131,58);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            height: 45px;
+        }
+        .mulah-header__image {
+          margin: 40px auto 0!important;
+          height: 25px!important;
+        }
+        .Registration{
+          width: 80%;
+          margin-bottom: 0px;
+        }
+        form {
+            width: 80%; /* Make form responsive */
+            max-width: 400px; /* Limit width */
+            padding: 20px;
+            margin-top: 0px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-left: 0px;
+            float: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .small-text {
+            font-size: 12px;
+            color: maroon;
+            margin: 5px 0;
+        }
+
+        /* Birthday fields inline */
+        .birthday-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        .birthday-group input {
+            width: 33%;
+        }
+    </style>
+</head>
+<body>
+  <div class="mulah-header__image">
+    <img style="width: 140px;" src="https://mulahpictures.s3-ap-southeast-1.amazonaws.com/mulah_logo.png">
+  </div>
+  <div class="Registration">
+    <h2 style="text-align: left;">Registration</h2>
+    <p style="text-align: left;">Please fill up your details</p>
+  </div>
+  <form>
+    <label for="name">Name</label>
+    <input type="text" id="Name" placeholder="Enter Name" required>
+    <p class="small-text">*Please insert a name</p>
+    
+    <label for="birthday">Birthday</label><br><br>
+    <div class="birthday-group">
+        <input type="number" id="day" placeholder="DD" required>
+        <input type="number" id="month" placeholder="MM" required>
+        <input type="number" id="year" placeholder="YYYY" required>
+    </div>
+    <p class="small-text">*Please insert your birthday</p>
+
+    <label for="email">Email</label>
+    <input type="email" id="Email" placeholder="Enter Address" required>
+    <p class="small-text">*Please insert a valid email address</p>
+
+    <button type="button" onclick="submitDetails()">Continue</button>
+
+</form>
+    <script>
+        function submitDetails() {
+    const userData = {
+        phone: localStorage.getItem("phoneNumber"),
+        name: document.getElementById("Name").value,  // Fixed ID
+        birthday: document.getElementById("day").value + "-" + 
+                  document.getElementById("month").value + "-" + 
+                  document.getElementById("year").value, // Combine Birthday
+        email: document.getElementById("Email").value  // Fixed ID
+    };
+
+    localStorage.setItem("userData", JSON.stringify(userData));
+    window.location.href = "page3.html";
+}
+
+
+    </script>
+</body>
+</html>
